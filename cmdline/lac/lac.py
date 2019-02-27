@@ -11,22 +11,10 @@ import io
 def parse_args():
     parser = argparse.ArgumentParser("Run inference.")
     parser.add_argument(
-        '--batch_size',
-        type=int,
-        default=5,
-        help='The size of a batch. (default: %(default)d)'
-    )
-    parser.add_argument(
         '--model_path',
         type=str,
         default='./conf/model',
         help='A path to the model. (default: %(default)s)'
-    )
-    parser.add_argument(
-        '--test_data_dir',
-        type=str,
-        default='./data/test_data',
-        help='A directory with test data files. (default: %(default)s)'
     )
     parser.add_argument(
         "--word_dict_path",
@@ -56,11 +44,6 @@ def print_arguments(args):
         print('%s: %s' % (arg, value))
     print('------------------------------------------------')
 
-
-def get_real_tag(origin_tag):
-    if origin_tag == "O":
-        return "O"
-    return origin_tag[0:len(origin_tag) - 2]
 
 # Object oriented encapsulate paddle model inference
 class LACModel(object):
@@ -94,11 +77,9 @@ class LACModel(object):
                 word_idx.append(int(self.word2id_dict["OOV"]))
 
         word_idx_list = [[x for x in word_idx]]
-        print(word_idx_list)
         word_idx_lod = self.__to_lodtensor(word_idx_list, self.place)
 
         word_list = [line]
-        print(word_list)
         return word_idx_lod, word_list
 
 
@@ -112,15 +93,12 @@ class LACModel(object):
                              return_numpy=False)
 
         lod_info = (crf_decode.lod())[0]
-        print(lod_info)
         np_data = np.array(crf_decode)
-        print(np_data)
-        #assert len(data) == len(lod_info) - 1
+        seg_result = []
         for sen_index in range(len(word_list)):
             word_index = 0
             outstr = ""
             cur_full_word = ""
-            cur_full_tag = ""
             words = word_list[sen_index]
             for tag_index in range(lod_info[sen_index],
                                     lod_info[sen_index + 1]):
@@ -128,16 +106,14 @@ class LACModel(object):
                 cur_tag = self.id2label_dict[str(np_data[tag_index][0])]
                 if cur_tag.endswith("-B") or cur_tag.endswith("O"):
                     if len(cur_full_word) != 0:
-                        outstr += cur_full_word + u"/" + cur_full_tag + u" "
+                        seg_result.append(cur_full_word)
                     cur_full_word = cur_word
-                    cur_full_tag = get_real_tag(cur_tag)
                 else:
                     cur_full_word += cur_word
                 word_index += 1
-            outstr += cur_full_word + u"/" + cur_full_tag + u" "    
-            outstr = outstr.strip()
-            full_out_str += outstr + u"\n"
-        print(full_out_str.strip(), file=sys.stdout)
+            seg_result.append(cur_full_word)
+        
+        return seg_result
 
     def ner(self, sentence):
         pass
@@ -158,6 +134,12 @@ class LACModel(object):
         res.set(flattened_data, place)
         res.set_lod([lod])
         return res
+
+    def __get_real_tag(self, origin_tag):
+        if origin_tag == "O":
+            return "O"
+        return origin_tag[0:len(origin_tag) - 2]
+
 
     def load_dict(self, dict_path):
         """
@@ -188,4 +170,5 @@ if __name__ == "__main__":
     args = parse_args()
     print_arguments(args)
     lac = LACModel(args)
-    lac.segment("我是一个中国人")
+    result = lac.segment("我是一个中国人")
+    print("/".join(result))
