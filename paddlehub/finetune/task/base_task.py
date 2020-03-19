@@ -343,6 +343,10 @@ class BaseTask(object):
         # set default phase
         self.enter_phase("train")
 
+    @property
+    def base_main_program(self):
+        return self._base_main_program
+
     @contextlib.contextmanager
     def phase_guard(self, phase):
         self.enter_phase(phase)
@@ -392,7 +396,7 @@ class BaseTask(object):
         self._build_env_start_event()
         self.env.is_inititalized = True
         self.env.main_program = clone_program(
-            self._base_main_program, for_test=False)
+            self.base_main_program, for_test=False)
 
         self.env.startup_program = fluid.Program()
         with fluid.program_guard(self.env.main_program,
@@ -1070,12 +1074,28 @@ class BaseTask(object):
                 step_run_state.run_step = 1
                 num_batch_examples = len(batch)
 
-                fetch_result = self.exe.run(
-                    self.main_program_to_be_run,
-                    feed=batch,
-                    fetch_list=self.fetch_list,
-                    return_numpy=self.return_numpy)
-                if not self.return_numpy:
+                if self.return_numpy == 2:
+                    fetch_result = self.exe.run(
+                        self.main_program_to_be_run,
+                        feed=batch,
+                        fetch_list=self.fetch_list,
+                        return_numpy=False)
+                    # fetch_result = [x if isinstance(x,fluid.LoDTensor) else np.array(x) for x in fetch_result]
+                    fetch_result = [
+                        x if hasattr(x, 'recursive_sequence_lengths') else
+                        np.array(x) for x in fetch_result
+                    ]
+                elif self.return_numpy:
+                    fetch_result = self.exe.run(
+                        self.main_program_to_be_run,
+                        feed=batch,
+                        fetch_list=self.fetch_list)
+                else:
+                    fetch_result = self.exe.run(
+                        self.main_program_to_be_run,
+                        feed=batch,
+                        fetch_list=self.fetch_list,
+                        return_numpy=False)
                     fetch_result = [np.array(x) for x in fetch_result]
 
                 for index, result in enumerate(fetch_result):
