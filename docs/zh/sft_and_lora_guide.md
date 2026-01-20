@@ -11,7 +11,7 @@
 
 # 2. 数据准备
 
-为了方便演示，我们提供一个 demo 数据，执行下载并解压。如果想要使用自己的数据进行训练，请参考[数据集格式说明](https://ku.baidu-int.com/knowledge/HFVrC7hq1Q/Rg5-m2iR7g/YkH5mORwJ3/kiB4S2YyAsROkm?t=mention&mt=doc&dt=doc)进行数据的准备。
+为了方便演示，我们提供一个 demo 数据，执行下载并解压。如果想要使用自己的数据进行训练，请参考[数据集格式说明](./dataset_format.md)进行数据的准备。
 
 ```shell
 wget https://paddleformers.bj.bcebos.com/datasets/release/v1.0/sft_online_data_messages.tar.gz
