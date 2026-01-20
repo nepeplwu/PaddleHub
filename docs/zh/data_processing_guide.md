@@ -1,6 +1,6 @@
-# 数据流基础参数说明
+# 1. 数据流基础参数说明
 
-## 参数说明
+## 1.1. 参数说明
 
 * 参数
 
@@ -24,9 +24,9 @@ train_dataset_type: "erniekit,erniekit"
 train_dataset_path: "./examples/data/sft-train1.jsonl,./examples/data/sft-train2.jsonl"
 ```
 
-# 多源数据集混合策略
+# 2. 多源数据集混合策略
 
-## 参数说明
+## 2.1. 参数说明
 
 * 参数
 
@@ -52,7 +52,7 @@ train_dataset_prob: "0.8,0.2"
 mix_strategy: "concat"
 ```
 
-## 混合策略
+## 2.2. 混合策略
 
 在很多情况下，开发者可能有多个源的数据需要进行训练。在训练时，通过不同的策略进行混合使用。
 
@@ -67,11 +67,11 @@ PaddleFormers 目前支持四种数多源数据集拼接策略：`random`, `conc
 
 * 注意：`num_samples_each_epoch`只适用于`random`数据采样策略。
 
-# 数据拼接策略
+# 3. 数据拼接策略
 
 在大模型（LLM / 多模态模型）训练过程中，**序列长度不一致** 是一个天然且普遍存在的问题。不同样本在 token 数、模态数量（文本、图像、视频）上差异极大，如果不对数据进行合理组织，会导致 **严重的计算和显存浪费** ，成为训练效率和规模扩展的核心瓶颈。因此，我们引入 **packing、padding-free 等数据拼接策略** 解决该问题。
 
-## 参数说明
+## 3.1. 参数说明
 
 * 参数
 
@@ -93,7 +93,7 @@ padding_free: false
 use_global_causal_attn: false
 ```
 
-## 数据 packing 策略
+## 3.2. 数据 packing 策略
 
 `packing` 是一种优化批处理的技术，将多个短输入序列输入大语言模型（LLM）之前，先将它们合并成一个更长的序列，这能减少填充开销，并提高硬件利用率（例如，提升 GPU/TPU 的效率）。
 
@@ -113,13 +113,13 @@ use_global_causal_attn: false
   <img width="671" height="371" alt="data_packing" src="https://github.com/user-attachments/assets/ccd7c0a7-5cbb-4ef6-b4f3-95ed7296266d" />
 </div>
 
-## Padding Free
+## 3.3. Padding Free
 
 `padding_free` 将一个 batch 中的数据进行展平而避免数据 padding，从而降低显存占用并加快训练（同一 batch 的不同序列之间依旧是不可见的）。默认为 False。
 
 相较于`packing`，`padding_free`不需要额外的预处理时间，但`packing`的训练速度更快且显存占用更稳定。
 
-## Attention Mask
+## 3.4. Attention Mask
 
 数据流默认会传入一个因果的 Attention Mask，在 packing 情况下，
 
@@ -134,13 +134,13 @@ use_global_causal_attn: false
   </div>
 </div>
 
-# 离线数据流使用
+# 4. 离线数据流使用
 
 相比在线数据流，离线数据流将分词、裁剪、packing 等复杂数据处理前移，在训练阶段仅做顺序读取与计算，显著降低 CPU 开销，提升训练稳定性和可复现性，更适合大规模分布式训练。
 
 当前 PaddleFormers 仅支持**预训练数据**使用离线数据流
 
-## 离线数据流制作
+## 4.1. 离线数据流制作
 
 离线数据流制作方法如下：
 
@@ -182,7 +182,7 @@ python -u examples/tools/create_pretraining_data.py \
 |`--log_interval`|int|打印日志间隔|
 |`--data_impl`|str|制作的数据集类型，默认为 mmap，也可以选择 lazy|
 
-## 参数说明
+## 4.2. 参数说明
 
 * 参数
 

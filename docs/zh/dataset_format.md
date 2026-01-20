@@ -1,8 +1,8 @@
-# 文件格式说明
+# 1. 文件格式说明
 
 当前 PaddleFormers 的预训练、后训练数据流支持 `jsonl` 、 `json` 等格式的数据，训练时需确保文件名后缀和文件内容格式保持一致。
 
-## 新增文件格式支持
+## 1.1. 新增文件格式支持
 
 如果您有格外的文件格式需要支持，可以在 `paddleformers/datasets/reader/io.py` 里面实现各种类型文件的读取函数，返回的数据格式为 `List（Dict）`
 
@@ -31,13 +31,13 @@ self.loader_map = {
 }
 ```
 
-# 数据格式说明
+# 2. 数据格式说明
 
 PaddleFormers 支持业界常用的不同的数据集格式，通常情况下，我们推荐使用 `messages` 格式，该格式下数据的表示较为直观且功能齐全。
 
-## 预训练/后预训练数据格式
+## 2.1. 预训练/后预训练数据格式
 
-###  在线数据流
+### 2.1.1. 在线数据流
 
 #### messages 格式
 
@@ -79,7 +79,7 @@ wget https://paddleformers.bj.bcebos.com/datasets/release/v1.0/pt_online_data_er
 mkdir -p data/pt && tar -xf pt_online_data_erniekit.tar.gz -C data/pt/
 ```
 
-### 离线数据流
+### 2.1.2. 离线数据流
 
 我们也可以选择使用离线的比特预训练数据流，更节省内存。
 
@@ -129,9 +129,9 @@ python -u examples/tools/create_pretraining_data.py \
 |`--log_interval`|int|打印日志间隔|
 |`--data_impl`|str|制作的数据集类型，默认为 mmap，也可以选择 lazy|
 
-## 指令微调（SFT）数据格式
+## 2.2. 指令微调（SFT）数据格式
 
-### messages 格式
+#### messages 格式
 
 使用 `messages` 格式需要在 `train(/eval)_dataset_type` 处指定为 `messages`
 
@@ -187,7 +187,7 @@ Notes:
 wget https://paddleformers.bj.bcebos.com/datasets/release/v1.0/sft_function_call_data.tar.gz
 mkdir -p data/sft && tar -zxf sft_function_call_data.tar.gz -C data/sft/
 ```
-### erniekit 格式
+#### erniekit 格式
 
 使用 `erniekit` 格式需要在 `train(/eval)_dataset_type` 处指定为 `erniekit`
 
@@ -231,9 +231,9 @@ mkdir -p data/sft && tar -xf sft_online_data_messages.tar.gz -C data/sft/
 wget https://paddleformers.bj.bcebos.com/datasets/release/v1.0/sft_online_data_erniekit.tar.gz
 mkdir -p data/sft && tar -xf sft_online_data_erniekit.tar.gz -C data/sft/
 ```
-## 直接偏好优化（DPO）数据格式
+## 2.3. 直接偏好优化（DPO）数据格式
 
-### messages 格式
+#### messages 格式
 
 使用 `messages` 格式需要在 `train(/eval)_dataset_type` 处指定为 `messages`
 
@@ -307,7 +307,8 @@ DPO 数据流中，每条数据都是一个字典，包含以下字段：
 wget https://paddleformers.bj.bcebos.com/datasets/release/v1.0/dpo_function_call_data.tar.gz
 mkdir -p data/dpo && tar -xf dpo_function_call_data.tar.gz -C data/dpo/
 ```
-### erniekit 格式
+
+#### erniekit 格式
 
 使用 `erniekit` 格式需要在 `train(/eval)_dataset_type` 处指定为 `erniekit`
 
@@ -361,9 +362,9 @@ wget https://paddleformers.bj.bcebos.com/datasets/release/v1.0/dpo_online_data_e
 mkdir -p data/dpo && tar -xf dpo_online_data_erniekit.tar.gz -C data/dpo/
 ```
 
-## 多模态指令微调（SFT） 数据格式
+## 2.4. 多模态指令微调（SFT） 数据格式
 
-### messages 格式
+#### messages 格式
 使用 `messages` 格式需要在 `train(/eval)_dataset_type` 处指定为 `messages`
 
 多模态 messages 格式需要在纯文本 messages 格式的基础上加上`images`、`videos`、`audios`几个 key，用于传入多模态资源的`url`或者`path`，同时在`messages`中插入`<image>`、`<video>`、`<audio>`标签来表述插入多模态数据的位置：
@@ -389,7 +390,7 @@ mkdir -p data/dpo && tar -xf dpo_online_data_erniekit.tar.gz -C data/dpo/
 {"messages": [{"role": "assistant", "content": "<image>是一个大象，<video>是一只狮子在跑步"}], "images": ["/xxx/x.jpg"], "videos": ["/xxx/x.mp4"]}
 ```
 
-### erniekit 格式
+#### erniekit 格式
 
 使用 `erniekit` 格式需要在 `train(/eval)_dataset_type` 处指定为 `erniekit`
 
@@ -472,7 +473,7 @@ wget https://paddleformers.bj.bcebos.com/datasets/release/v1.0/sft_vl_data_ernie
 mkdir -p data/sft-vl && tar -xf sft_vl_data_erniekit.tar.gz -C data/sft-vl
 ```
 
-## 新增数据格式支持
+## 2.5. 新增数据格式支持
 
 PaddleFormers 支持多种不同的数据格式处理，我们通过将其他数据格式转换为 messages 格式来实现该功能
 

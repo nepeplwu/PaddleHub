@@ -1,4 +1,4 @@
-# 背景说明
+# 1. 背景说明
 
 大语言模型依托对话交互能力，能够输出符合人类语境的智能回复。而这一能力需依托 **Chat Template **结构化标注角色与上下文，定义多轮对话数据如何被转换为模型可训练的 token 序列，从而确保交互逻辑精准。
 
@@ -10,7 +10,7 @@
 
 * 哪些 token 参与 loss 计算（label / mask 规则）
 
-# 使用说明
+# 2. 使用说明
 
 PaddleFormers 内置了常用模型的默认 Chat Template，普通用户无需额外开发，在训练配置中指定使用即可，如 qwen3：
 
@@ -29,7 +29,7 @@ template: qwen3
 
 在模型列表中，我们给出了不同模型训练时所需使用的 Template，在训练时请按照表格所建议的 Template 进行设置。
 
-# 自定义新的 Template
+# 3. 自定义新的 Template
 
 在以下情况中，您可能想要使用自己定义的 Chat Template：
 
@@ -43,7 +43,7 @@ template: qwen3
 
 对于未注册的情况，框架将使用对应模型的默认模板。
 
-## 注册方法
+## 3.1. 注册方法
 
 在 `paddleformers/datasets/template/template.py` 文件中实现模型 chat template 的注册，如：
 
@@ -63,7 +63,7 @@ register_template(
 )
 ```
 
-## 参数说明
+## 3.2. 参数说明
 
 |参数名|解释|
 |-|-|
@@ -86,13 +86,13 @@ register_template(
 |`grounding_plugin`|使用什么插件来处理 grounding 任务的 target 信息|
 |`template_class`|template 类，可以选 Template 或 ReasoningTemplate，ReasoningTemplate 一般是思考模型会用的，会根据 enable_thinking 决定是否删除思考信息|
 
-## 多模态处理（注册 mm_plugin）
+## 3.3. 多模态处理（注册 mm_plugin）
 
 多模模型需要实现自己的多模数据处理方法，包括图片处理、视频处理、音频处理、获取处理后的 tokens 数量来填充占位符
 
 具体实现方式可以参考 Qwen2VLPlugin 类
 
-### 多模数据下载（选做）
+### 3.3.1. 多模数据下载（选做）
 
 在基类 `MMPluginMixin` 中，PaddleFormers 已经为大家实现了最基本的数据下载函数：
 
@@ -104,7 +104,7 @@ register_template(
 
 若大家有定制化的数据下载需求，只需重写对应的处理函数即可
 
-### 多模数据预处理（选做）
+### 3.3.2. 多模数据预处理（选做）
 
 在基类 `MMPluginMixin` 中，PaddleFormers 已经为大家实现了最基本的多模数据预处理函数：`_get_mm_inputs`
 
@@ -112,7 +112,7 @@ register_template(
 
 若大家有定制化的数据预处理需求，只需重写 `_get_mm_inputs` 函数即可
 
-### 多模 token 拼接（必做）
+### 3.3.3. 多模 token 拼接（必做）
 
 PaddleFormers 需要重写 `process_messages` 函数来实现 template 中多模 token 的拼接逻辑。
 
@@ -137,7 +137,7 @@ for message in messages:    # 遍历messages中的每一轮对话
 # ... 省略后续处理逻辑
 ```
 
-### mm_plugin 注册
+### 3.3.4. mm_plugin 注册
 
 类实现后在下面注册：
 
@@ -149,7 +149,7 @@ PLUGINS = {
     "glm4v": GLM4VPlugin,
 }
 ```
-### template 注册
+### 3.3.5. template 注册
 
 mm_plugin 注册完后，还需要在 template 中注册：
 
@@ -163,7 +163,7 @@ register_template(
 
 其中，`name`需要填入在`PLUGINS`中注册的`key`名，`image_token`、`video_token`、`audio_token`为模型各模态的 special token。
 
-## 示例
+## 3.4 示例
 如果模型的 chat template 为：
 
 ```jinja
@@ -186,14 +186,14 @@ register_template(
 )
 ```
 
-## 查看 Template 处理效果
+## 3.5 查看 Template 处理效果
 
 在进行 sft 训练的时候，打开 FLAGS_enable_dataset_debug，即可打印 decode 之后的 input_ids 和 label，如：
 
 ![template-demo](https://github.com/user-attachments/assets/b4dd54bb-1968-47d5-b662-3404b9baefa9)
 查看打印的 input 和 labels 是否符合预期来确认 template 实现是否正确
 
-# 推理使用说明
+# 4. 推理使用说明
 
 训练阶段自定义注册的 template 必须与推理阶段保持一致，确保相同输入在两阶段生成完全一致的 token。否则将导致训练与推理输入不一致，影响模型实际推理表现。
 

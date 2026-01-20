@@ -1,4 +1,4 @@
-# 安装
+# 1. 安装
 
 **环境依赖**
 
@@ -99,7 +99,7 @@ cd PaddleFormers
 python -m pip install -e .
 ```
 
-# 开始 post-training：
+# 2. 开始训练
 
 所有示例脚本都位于 examples/config/xpu 下。下面以 ERNIE-4.5-21B-A3B-PT 的 SFT 为例。首先需要通过 Huggingface 下载模型：
 
