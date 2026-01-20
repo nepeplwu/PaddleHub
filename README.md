@@ -140,7 +140,7 @@ PaddleFormers 是基于百度深度学习框架 PaddlePaddle 搭建的 Transform
 
 为了避免本地环境存在较多冲突，我们建议使用 PaddleFormers 的预置镜像来准备环境，容器中已经拉取了 PaddleFormers 仓库并完成了安装：
 
-```
+```shell
 # 以cuda12.6为例
 docker run --gpus all --name paddleformers-work -v $(pwd):/work  \
     -w=/work --shm-size=512G --network=host -it \
@@ -153,7 +153,7 @@ docker run --gpus all --name paddleformers-work -v $(pwd):/work  \
 
 我们推荐使用 `conda` / `venv` / `uv` 等虚拟环境工具管理 python 环境。
 
-```
+```shell
 # conda
 conda create -n paddleformers-work python=3.10 #支持python3.10～3.13
 conda activate paddleformers-work
@@ -166,12 +166,12 @@ source .paddleformers-work/bin/activate
 ```
 如果您无需使用 PaddleFormers 的训练功能（只使用 tokenizer 或者 processor），可以通过以下命令安装，这种情况下不会安装训练相关的依赖
 
-```
+```shell
 pip install paddleformers
 ```
 如果您需要 PaddleFormers 提供的训练能力，需要安装包含 paddlefleet 的 PaddleFormers
 
-```
+```shell
 # Install via pip
 # cuda12.6
 pip install paddleformers[paddlefleet] --extra-index-url https://www.paddlepaddle.org.cn/packages/stable/cu126/
@@ -182,7 +182,7 @@ pip install paddleformers[paddlefleet] --extra-index-url https://www.paddlepaddl
 ```
 如果您需要 PaddleFormers 提供的训练能力以及仓库中的样例配置（用于快速体验），建议拉取源码后安装
 
-```
+```shell
 # Install development version
 git clone https://github.com/PaddlePaddle/PaddleFormers.git
 cd PaddleFormers
@@ -193,6 +193,7 @@ pip install -e '.[paddlefleet]' --extra-index-url https://www.paddlepaddle.org.c
 # cuda13.0
 # pip install -e '.[paddlefleet]' --extra-index-url https://www.paddlepaddle.org.cn/packages/stable/cu130/
 ```
+
  **安装依赖（XPU & ILUVATAR-GPU & Metax GPU）**
 
 * [昆仑芯安装说明文档](./docs/zh/XPU_installation_guide.md)
@@ -200,6 +201,7 @@ pip install -e '.[paddlefleet]' --extra-index-url https://www.paddlepaddle.org.c
 * [沐熙安装说明文档](./docs/zh/Metax-GPU_installation_guide.md)
 
 # ⚡快速体验
+
 PaddleFormers 在 API 设计上与 Hugging Face Transformers 保持了高度一致，使用示例如下：
 
 **使用 tokenizer**
