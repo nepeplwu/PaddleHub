@@ -1,5 +1,3 @@
-PaddleFormers 模型能力矩阵
-
 # 训练能力支持
 |模型|PT / CPT|SFT|SFT-LoRA|DPO|DPO-LoRA|
 |-|-|-|-|-|-|
@@ -42,6 +40,6 @@ PaddleFormers 模型能力矩阵
 # 多硬件训练支持
 |模型|昆仑芯 P800|天数智芯天垓150|沐曦 C550|
 |-|-|-|-|
-|🏛️PaddleOCR-VL|√|√|x|
-|🏛️ERNIE-4.5|√|√|√|
-|DeepSeekv3|√|x|x|
+|🏛️PaddleOCR-VL|✓|✓|x|
+|🏛️ERNIE-4.5|✓|✓|✓|
+|DeepSeekv3|✓|x|x|
