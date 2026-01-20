@@ -29,11 +29,11 @@ PaddleFormers 是基于百度深度学习框架 PaddlePaddle 搭建的 Transform
 * 2026.01.21 - PaddleFomers v1.0版本发布啦！我们提供了针对 LLM 和 VLM 等模型的训练能力，针对 DeepSeek-V3模型和 GLM-4.5-Air 等重点模型，我们实现了极致性能优化（训练性能最高超越 Megatron-LM 10%+）。针对 PaddleOCR-VL，我们在昆仑芯 P800、天数天垓150等国产计算芯片上进行了适配，更好的满足国内用户需求。
 
 ## ✨特性
-* **丰富的模型支持：**PaddleFormers 实现了对于 100+ 主流的大语言模型和视觉语言模型的训练能力支持，涵盖了 DeepSeek-V3、GLM-4.5系列、Qwen2和 Qwen3系列、Qwen3-VL 等前沿模型。同时提供了对 ERNIE-4.5、ERNIE-4.5-VL、PaddleOCR-VL 等文心系列模型完备的训练能力。
-* **高性能组网实现：**集成 FP8低精度训练、计算通信重叠、精细化存算均衡等策略，深度结合飞桨稀疏注意力掩码计算技术 FlashMask 以及 DeepEP、DeepGEMM、sonicMoE 等一系列高性能算子，全面优化混合专家（MoE）模型的计算、通信和存储效率。在 DeepSeek-V3、GLM-4.5-Air 等重点模型上，训练性能最高超越 Megatron-LM 10%以上。
-* **全流程能力支持：**PaddleFormers 实现了从预训练到后训练的全流程训练能力支持，其中后训练支持 CPT / SFT / SFT-LoRA / DPO / DPO-LoRA 等主流能力，帮助用户高效、便捷地完成大模型的迭代与优化。PaddleFormers 还实现了对 Safetensors 格式的**全面支持**，训练完成的模型，其存储格式与 Hugging Face 上托管的权重格式一致，可以在任意支持该格式的框架或工具中使用（如 FastDeploy / vLLM / SGLang 等）。
-* **完备的训练能力支持：**PaddleFormers 实现了对于**Function Call**、**Thinking**​ 等大模型前沿能力的训练支持，并通过**Data ****Packing**、**Padding Free**​ 等数据流技术显著优化训练性能。
-* **国产芯片深度适配：**支持昆仑芯 P800、天数天垓150、沐曦 C550等国产计算平台，基于128卡昆仑芯 P800支持 DeepSeek V3的 SFT，成为最少国产算力资源后训练方案。
+* **丰富的模型支持：** PaddleFormers 实现了对于 100+ 主流的大语言模型和视觉语言模型的训练能力支持，涵盖了 DeepSeek-V3、GLM-4.5系列、Qwen2和 Qwen3系列、Qwen3-VL 等前沿模型。同时提供了对 ERNIE-4.5、ERNIE-4.5-VL、PaddleOCR-VL 等文心系列模型完备的训练能力。
+* **高性能组网实现：** 集成 FP8低精度训练、计算通信重叠、精细化存算均衡等策略，深度结合飞桨稀疏注意力掩码计算技术 FlashMask 以及 DeepEP、DeepGEMM、sonicMoE 等一系列高性能算子，全面优化混合专家（MoE）模型的计算、通信和存储效率。在 DeepSeek-V3、GLM-4.5-Air 等重点模型上，训练性能最高超越 Megatron-LM 10%以上。
+* **全流程能力支持：** PaddleFormers 实现了从预训练到后训练的全流程训练能力支持，其中后训练支持 CPT / SFT / SFT-LoRA / DPO / DPO-LoRA 等主流能力，帮助用户高效、便捷地完成大模型的迭代与优化。PaddleFormers 还实现了对 Safetensors 格式的 **全面支持** ，训练完成的模型，其存储格式与 Hugging Face 上托管的权重格式一致，可以在任意支持该格式的框架或工具中使用（如 FastDeploy / vLLM / SGLang 等）。
+* **完备的训练能力支持：** PaddleFormers 实现了对于 **Function Call** 、 **Thinking**​ 等大模型前沿能力的训练支持，并通过 **Data Packing** 、 **Padding Free**​ 等数据流技术显著优化训练性能。
+* **国产芯片深度适配：** 支持昆仑芯 P800、天数天垓150、沐曦 C550等国产计算平台，基于128卡昆仑芯 P800支持 DeepSeek V3的 SFT，成为最少国产算力资源后训练方案。
 
 ## 📋模型列表
 |模型类型|模型系列|模型名称|Chat Template|
