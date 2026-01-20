@@ -263,7 +263,9 @@ paddleformers-cli train ./examples/config/sft/full.yaml
 ## 💬社区交流
 * 微信扫描二维码并填写问卷，即可加入交流群与众多社区开发者以及官方团队深度交流.
 
-![qrcode](https://github.com/user-attachments/assets/9f0a736c-b047-4912-a70f-8b1ea772c3eb)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/9f0a736c-b047-4912-a70f-8b1ea772c3eb" width="300" alt="qrcode">
+</div>
 
 ## 🙏**致谢**
 我们借鉴了 Hugging Face 的[Transformers](https://github.com/huggingface/transformers)🤗关于预训练模型使用的优秀设计，在此对 Hugging Face 作者及其开源社区表示感谢。
