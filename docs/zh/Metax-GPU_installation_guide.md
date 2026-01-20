@@ -114,10 +114,8 @@ apt-get install -y libssl-dev
 
 ```shell
 git clone  https://github.com/PaddlePaddle/PaddleFormers.git
-git checkout develop
-cd paddleformers
-pip install  -r requirements.txt
-pip install -e .
+cd PaddleFormers
+python -m pip install -e .
 ```
 
 

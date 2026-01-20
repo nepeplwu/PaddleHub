@@ -111,7 +111,7 @@ python -m pip install --pre paddle-iluvatar-gpu -i https://www.paddlepaddle.org.
 ```shell
 git clone https://github.com/PaddlePaddle/PaddleFormers.git
 cd PaddleFormers
-pip install -e .
+python -m pip install -e .
 ```
 
 # 开始 post-training：

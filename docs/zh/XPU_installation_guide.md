@@ -96,7 +96,7 @@ python -m pip install --pre paddlepaddle-xpu -i https://www.paddlepaddle.org.cn/
 ```shell
 git clone https://github.com/PaddlePaddle/PaddleFormers.git
 cd PaddleFormers
-pip install -e .
+python -m pip install -e .
 ```
 
 # 开始 post-training：
