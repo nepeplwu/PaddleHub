@@ -85,7 +85,7 @@ print("Chat response:", chat_response)
 
 * **负载均衡式 PD 分解**：工业级解决方案，支持上下文缓存与动态实例角色切换，在保障 SLO 达标和吞吐量的同时优化资源利用率
 * **统一 KV 缓存传输**：轻量级高性能传输库，支持智能 NVLink/RDMA 选择
-* **OpenAI API 协议兼容：**服务化部署支持 OpenAI 协议调用
+* **OpenAI API 协议兼容**：服务化部署支持 OpenAI 协议调用
 * **全量化格式支持**：W8A16、W8A8、W4A16、W4A8、W2A16、FP8等
 * **丰富的加速策略**：推测解码、多令牌预测（MTP）及分块预填充
 * **多硬件支持**：NVIDIA GPU、昆仑芯 XPU、海光 DCU、天数智芯 GPU、燧原 GCU、沐曦 GPU、英特尔 Gaudi 等

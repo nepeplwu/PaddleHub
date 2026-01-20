@@ -8,7 +8,7 @@ PaddleFormers CLI（Command Line Interface）提供了基于终端的程序交�
 
 **安装**
 
-参考[readme 文档](../../README.md)进行 paddleformers 安装
+参考[README 文档](../../README.md)进行 paddleformers 安装
 
 验证安装：
 
