@@ -36,22 +36,93 @@ PaddleFormers 是基于百度深度学习框架 PaddlePaddle 搭建的 Transform
 * **国产芯片深度适配：** 支持昆仑芯 P800、天数天垓150、沐曦 C550等国产计算平台，基于128卡昆仑芯 P800支持 DeepSeek V3的 SFT，成为最少国产算力资源后训练方案。
 
 ## 📋模型列表
-|模型类型|模型系列|模型名称|Chat Template|
-|-|-|-|-|
-|LLM|DeepSeekv3|deepseek-ai/DeepSeek-V3-Base、deepseek-ai/DeepSeek-V3、deepseek-ai/DeepSeek-V3-0324|deepseek3|
-||**🏛️**ERNIE-4.5|baidu/ERNIE-4.5-0.3B-Base-PT、baidu/ERNIE-4.5-0.3B-PT、baidu/ERNIE-4.5-21B-A3B-Base-PT、baidu/ERNIE-4.5-21B-A3B-PT、baidu/ERNIE-4.5-300B-A47B-Base-PT、baidu/ERNIE-4.5-300B-A47B-PT、baidu/ERNIE-4.5-21B-A3B-Thinking|ernie、ernie_nothink|
-||gemma3|google/gemma-3-270m、google/gemma-3-270m-it、google/gemma-3-1b-pt、google/gemma-3-1b-it、google/gemma-3-4b-pt、google/gemma-3-4b-it、google/gemma-3-12b-pt、google/gemma-3-12b-it、google/gemma-3-27b-pt、google/gemma-3-27b-it|gemma|
-||GLM-4.5|zai-org/GLM-4.5-Air-Base、zai-org/GLM-4.5-Air、zai-org/GLM-4.5-Base、zai-org/GLM-4.5|glm4_moe|
-||gpt-oss|openai/gpt-oss-20b、openai/gpt-oss-120b|gpt|
-||Llama-3|meta-llama/Meta-Llama-3-8B、meta-llama/Meta-Llama-3-8B-Instruct、meta-llama/Meta-Llama-3-70B、meta-llama/Meta-Llama-3-70B-Instruct、meta-llama/Llama-3.1-8B、meta-llama/Llama-3.1-8B-Instruct、meta-llama/Llama-3.1-70B、meta-llama/Llama-3.1-70B-Instruct、meta-llama/Llama-3.1-405B、meta-llama/Llama-3.1-405B-Instruct、meta-llama/Llama-3.2-1B、meta-llama/Llama-3.2-1B-Instruct、meta-llama/Llama-3.2-3B、meta-llama/Llama-3.2-3B-Instruct、meta-llama/Llama-3.3-70B-Instruct|llama3|
-||phi-4|microsoft/phi-4|phi4|
-||Qwen2|Qwen/Qwen2-0.5B、Qwen/Qwen2-0.5B-Instruct、Qwen/Qwen2-1.5B、Qwen/Qwen2-1.5B-Instruct、Qwen/Qwen2-7B、Qwen/Qwen2-7B-Instruct、Qwen/Qwen2-57B-A14B、Qwen/Qwen2-57B-A14B-Instruct、Qwen/Qwen2-72B、Qwen/Qwen2-0.5B-Instruct|qwen|
-||Qwen3|Qwen/Qwen3-0.6B-Base、Qwen/Qwen3-0.6B、Qwen/Qwen3-1.7B-Base、Qwen/Qwen3-1.7B、Qwen/Qwen3-4B-Base、Qwen/Qwen3-4B、Qwen/Qwen3-4B-Instruct-2507、Qwen/Qwen3-4B-Thinking-2507、Qwen/Qwen3-8B-Base、Qwen/Qwen3-8B、Qwen/Qwen3-14B-Base、Qwen/Qwen3-14B、Qwen/Qwen3-32B、Qwen/Qwen3-30B-A3B-Base、Qwen/Qwen3-30B-A3B、Qwen/Qwen3-30B-A3B-Instruct-2507、Qwen/Qwen3-30B-A3B-Thinking-2507、Qwen/Qwen3-235B-A22B、Qwen/Qwen3-235B-A22B-Instruct-2507、Qwen/Qwen3-235B-A22B-Thinking-2507|qwen3、qwen3_nothink|
-||Qwen3-Next|Qwen/Qwen3-Next-80B-A3B-Instruct、Qwen/Qwen3-Next-80B-A3B-Thinking|qwen3、qwen3_nothink|
-|VLM|**🏛️**ERNIE-4.5-VL|baidu/ERNIE-4.5-VL-28B-A3B-Base-PT、baidu/ERNIE-4.5-VL-28B-A3B-PT、baidu/ERNIE-4.5-VL-424B-A47B-Base-PT、baidu/ERNIE-4.5-VL-424B-A47B-PT、baidu/ERNIE-4.5-VL-28B-A3B-Thinking|ernie_vl、ernie_vl_nothink|
-||**🏛️**PaddleOCR-VL|PaddlePaddle/PaddleOCR-VL|paddleocr_vl|
-||Qwen2.5-VL|Qwen/Qwen2.5-VL-3B-Instruct、Qwen/Qwen2.5-VL-7B-Instruct、Qwen/Qwen2.5-VL-32B-Instruct、Qwen/Qwen2.5-VL-72B-Instruct|qwen2_vl|
-||Qwen3-VL|Qwen/Qwen3-VL-2B-Instruct、Qwen/Qwen3-VL-2B-Thinking、Qwen/Qwen3-VL-4B-Instruct、Qwen/Qwen3-VL-4B-Thinking、Qwen/Qwen3-VL-8B-Instruct、Qwen/Qwen3-VL-8B-Thinking、Qwen/Qwen3-VL-32B-Instruct、Qwen/Qwen3-VL-32B-Thinking、Qwen/Qwen3-VL-30B-A3B-Instruct、Qwen/Qwen3-VL-30B-A3B-Thinking、Qwen/Qwen3-VL-235B-A22B-Instruct、Qwen/Qwen3-VL-235B-A22B-Thinking|qwen3_vl、qwen3_vl_nothink|
+
+<table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th style="text-align: left;">模型类型</th>
+      <th style="text-align: left;">模型系列</th>
+      <th style="text-align: left;">模型名称</th>
+      <th style="text-align: left;">Chat Template</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- LLM 分类 - 跨行合并开始 -->
+    <tr>
+      <td rowspan="10" style="vertical-align: top;">LLM</td>
+      <td>DeepSeekv3</td>
+      <td>deepseek-ai/DeepSeek-V3-Base、deepseek-ai/DeepSeek-V3、deepseek-ai/DeepSeek-V3-0324</td>
+      <td>deepseek3</td>
+    </tr>
+    <tr>
+      <td>🏛️ERNIE-4.5</td>
+      <td>baidu/ERNIE-4.5-0.3B-Base-PT、baidu/ERNIE-4.5-0.3B-PT、baidu/ERNIE-4.5-21B-A3B-Base-PT、baidu/ERNIE-4.5-21B-A3B-PT、baidu/ERNIE-4.5-300B-A47B-Base-PT、baidu/ERNIE-4.5-300B-A47B-PT、baidu/ERNIE-4.5-21B-A3B-Thinking</td>
+      <td>ernie、ernie_nothink</td>
+    </tr>
+    <tr>
+      <td>gemma3</td>
+      <td>google/gemma-3-270m、google/gemma-3-270m-it、google/gemma-3-1b-pt、google/gemma-3-1b-it、google/gemma-3-4b-pt、google/gemma-3-4b-it、google/gemma-3-12b-pt、google/gemma-3-12b-it、google/gemma-3-27b-pt、google/gemma-3-27b-it</td>
+      <td>gemma</td>
+    </tr>
+    <tr>
+      <td>GLM-4.5</td>
+      <td>zai-org/GLM-4.5-Air-Base、zai-org/GLM-4.5-Air、zai-org/GLM-4.5-Base、zai-org/GLM-4.5</td>
+      <td>glm4_moe</td>
+    </tr>
+    <tr>
+      <td>gpt-oss</td>
+      <td>openai/gpt-oss-20b、openai/gpt-oss-120b</td>
+      <td>gpt</td>
+    </tr>
+    <tr>
+      <td>Llama-3</td>
+      <td>meta-llama/Meta-Llama-3-8B、meta-llama/Meta-Llama-3-8B-Instruct、meta-llama/Meta-Llama-3-70B、meta-llama/Meta-Llama-3-70B-Instruct、meta-llama/Llama-3.1-8B、meta-llama/Llama-3.1-8B-Instruct、meta-llama/Llama-3.1-70B、meta-llama/Llama-3.1-70B-Instruct、meta-llama/Llama-3.1-405B、meta-llama/Llama-3.1-405B-Instruct、meta-llama/Llama-3.2-1B、meta-llama/Llama-3.2-1B-Instruct、meta-llama/Llama-3.2-3B、meta-llama/Llama-3.2-3B-Instruct、meta-llama/Llama-3.3-70B-Instruct</td>
+      <td>llama3</td>
+    </tr>
+    <tr>
+      <td>phi-4</td>
+      <td>microsoft/phi-4</td>
+      <td>phi4</td>
+    </tr>
+    <tr>
+      <td>Qwen2</td>
+      <td>Qwen/Qwen2-0.5B、Qwen/Qwen2-0.5B-Instruct、Qwen/Qwen2-1.5B、Qwen/Qwen2-1.5B-Instruct、Qwen/Qwen2-7B、Qwen/Qwen2-7B-Instruct、Qwen/Qwen2-57B-A14B、Qwen/Qwen2-57B-A14B-Instruct、Qwen/Qwen2-72B、Qwen/Qwen2-0.5B-Instruct</td>
+      <td>qwen</td>
+    </tr>
+    <tr>
+      <td>Qwen3</td>
+      <td>Qwen/Qwen3-0.6B-Base、Qwen/Qwen3-0.6B、Qwen/Qwen3-1.7B-Base、Qwen/Qwen3-1.7B、Qwen/Qwen3-4B-Base、Qwen/Qwen3-4B、Qwen/Qwen3-4B-Instruct-2507、Qwen/Qwen3-4B-Thinking-2507、Qwen/Qwen3-8B-Base、Qwen/Qwen3-8B、Qwen/Qwen3-14B-Base、Qwen/Qwen3-14B、Qwen/Qwen3-32B、Qwen/Qwen3-30B-A3B-Base、Qwen/Qwen3-30B-A3B、Qwen/Qwen3-30B-A3B-Instruct-2507、Qwen/Qwen3-30B-A3B-Thinking-2507、Qwen/Qwen3-235B-A22B、Qwen/Qwen3-235B-A22B-Instruct-2507、Qwen/Qwen3-235B-A22B-Thinking-2507</td>
+      <td>qwen3、qwen3_nothink</td>
+    </tr>
+    <tr>
+      <td>Qwen3-Next</td>
+      <td>Qwen/Qwen3-Next-80B-A3B-Instruct、Qwen/Qwen3-Next-80B-A3B-Thinking</td>
+      <td>qwen3、qwen3_nothink</td>
+    </tr>
+    <!-- VLM 分类 - 跨行合并开始 -->
+    <tr>
+      <td rowspan="4" style="vertical-align: top;">VLM</td>
+      <td>🏛️ERNIE-4.5-VL</td>
+      <td>baidu/ERNIE-4.5-VL-28B-A3B-Base-PT、baidu/ERNIE-4.5-VL-28B-A3B-PT、baidu/ERNIE-4.5-VL-424B-A47B-Base-PT、baidu/ERNIE-4.5-VL-424B-A47B-PT、baidu/ERNIE-4.5-VL-28B-A3B-Thinking</td>
+      <td>ernie_vl、ernie_vl_nothink</td>
+    </tr>
+    <tr>
+      <td>🏛️PaddleOCR-VL</td>
+      <td>PaddlePaddle/PaddleOCR-VL</td>
+      <td>paddleocr_vl</td>
+    </tr>
+    <tr>
+      <td>Qwen2.5-VL</td>
+      <td>Qwen/Qwen2.5-VL-3B-Instruct、Qwen/Qwen2.5-VL-7B-Instruct、Qwen/Qwen2.5-VL-32B-Instruct、Qwen/Qwen2.5-VL-72B-Instruct</td>
+      <td>qwen2_vl</td>
+    </tr>
+    <tr>
+      <td>Qwen3-VL</td>
+      <td>Qwen/Qwen3-VL-2B-Instruct、Qwen/Qwen3-VL-2B-Thinking、Qwen/Qwen3-VL-4B-Instruct、Qwen/Qwen3-VL-4B-Thinking、Qwen/Qwen3-VL-8B-Instruct、Qwen/Qwen3-VL-8B-Thinking、Qwen/Qwen3-VL-32B-Instruct、Qwen/Qwen3-VL-32B-Thinking、Qwen/Qwen3-VL-30B-A3B-Instruct、Qwen/Qwen3-VL-30B-A3B-Thinking、Qwen/Qwen3-VL-235B-A22B-Instruct、Qwen/Qwen3-VL-235B-A22B-Thinking</td>
+      <td>qwen3_vl、qwen3_vl_nothink</td>
+    </tr>
+  </tbody>
+</table>
 
 * 更多关于模型训练能力的支持细节，请参考：[PaddleFormers 模型能力矩阵](./docs/zh/model_capability.md)
 * 带有**🏛️**标签的模型是 PaddleFormers 官方维护的模型
