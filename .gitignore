@@ -9,6 +9,11 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+<<<<<<< HEAD
+=======
+build*
+!scripts/dependence/build.sh
+>>>>>>> 33d8fc8aabe8748a3e2a5aae9bdc3010e1252749
 develop-eggs/
 dist/
 downloads/
@@ -50,8 +55,15 @@ coverage.xml
 .pytest_cache/
 
 # Translations
+<<<<<<< HEAD
 *.mo
 *.pot
+=======
+*.doctree
+*.mo
+*.pot
+*.doctree
+>>>>>>> 33d8fc8aabe8748a3e2a5aae9bdc3010e1252749
 
 # Django stuff:
 *.log
@@ -115,6 +127,56 @@ dmypy.json
 .pyre/
 
 # pycharm
+<<<<<<< HEAD
 .DS_Store
 .idea/
 FETCH_HEAD
+=======
+
+# vscode
+.vscode
+./ppdiffusers/ppdiffusers/version.py
+
+# third party
+csrc/third_party/
+dataset/
+output/
+!tests/dataset/
+
+# gen codes
+autogen/
+
+# cutlass kernel
+!csrc/gpu/cutlass_kernels/gemm/collective/builders
+
+
+#fp8
+ops/csrc/fp8/deep_gemm/include/cutlass
+ops/csrc/fp8/deep_gemm/include/cute
+.ccls-cache
+.DS_Store
+.idea/
+FETCH_HEAD
+
+# vscode
+.vscode
+./ppdiffusers/ppdiffusers/version.py
+
+# third party
+csrc/third_party/
+dataset/
+output/
+!tests/dataset/
+
+# gen codes
+autogen/
+
+# cutlass kernel
+!csrc/gpu/cutlass_kernels/gemm/collective/builders
+
+
+#fp8
+ops/csrc/fp8/deep_gemm/include/cutlass
+ops/csrc/fp8/deep_gemm/include/cute
+.ccls-cache
+>>>>>>> 33d8fc8aabe8748a3e2a5aae9bdc3010e1252749

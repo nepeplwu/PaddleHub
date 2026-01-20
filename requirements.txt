@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 colorama
 colorlog
 easydict
@@ -17,3 +18,29 @@ tqdm
 visualdl >= 2.0.0
 # gunicorn not support windows
 gunicorn >= 19.10.0; sys_platform != "win32"
+=======
+colorlog
+scikit-learn
+multiprocess
+datasets >= 3.0.0
+tqdm
+sentencepiece
+huggingface_hub>=0.19.2
+protobuf>=3.20.2
+visualdl
+safetensors
+decord
+paddlecodec; sys_platform == 'linux'
+fast_dataindex>=0.1.1 ; platform_system == "Linux"
+aistudio-sdk>=0.3.0
+jinja2
+regex
+numpy
+tiktoken
+ml_dtypes
+omegaconf
+modelscope
+transformers>=4.55.1
+GPUtil
+importlib_metadata
+>>>>>>> 33d8fc8aabe8748a3e2a5aae9bdc3010e1252749
