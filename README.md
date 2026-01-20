@@ -125,7 +125,7 @@ PaddleFormers 是基于百度深度学习框架 PaddlePaddle 搭建的 Transform
 </table>
 
 * 更多关于模型训练能力的支持细节，请参考：[PaddleFormers 模型能力矩阵](./docs/zh/model_capability.md)
-* 带有**🏛️**标签的模型是 PaddleFormers 官方维护的模型
+* 带有🏛️标签的模型是 PaddleFormers 官方维护的模型
 
 ## 💾安装
 **环境依赖**
