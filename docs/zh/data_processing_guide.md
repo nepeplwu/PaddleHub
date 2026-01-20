@@ -109,7 +109,9 @@ use_global_causal_attn: false
 
 * 补充：在线预训练数据流中另外支持了`truncate_packing`的策略，支持将数据进行截断，有效降低 padding token，`truncate_packing`和`packing`设置为`True`即可使用，具体如下图所示：
 
-<img width="671" height="371" alt="data_packing" src="https://github.com/user-attachments/assets/ccd7c0a7-5cbb-4ef6-b4f3-95ed7296266d" />
+<div align="center">
+  <img width="671" height="371" alt="data_packing" src="https://github.com/user-attachments/assets/ccd7c0a7-5cbb-4ef6-b4f3-95ed7296266d" />
+</div>
 
 ## Padding Free
 
@@ -125,9 +127,11 @@ use_global_causal_attn: false
 
 * 当`use_global_causal_attn`为 false 的时候，对应下图所示的`Causal Document Attention`，一个`Sequence`内的不同 sample 是不可见的
 
-<div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
-  <img width="auto" height="300" alt="causal_attention_mask" src="https://github.com/user-attachments/assets/dcc2938c-fc06-42bc-96a2-35101b3e0ef8" />
-  <img width="auto" height="300" alt="causal_doc_attention_mask" src="https://github.com/user-attachments/assets/bbcfa19c-a70c-4144-903d-cb63ea1b6145" />
+<div align="center">
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <img height="300" width="auto" alt="causal_attention_mask" src="https://github.com/user-attachments/assets/dcc2938c-fc06-42bc-96a2-35101b3e0ef8" />
+    <img height="300" width="auto" alt="causal_doc_attention_mask" src="https://github.com/user-attachments/assets/bbcfa19c-a70c-4144-903d-cb63ea1b6145" />
+  </div>
 </div>
 
 # 离线数据流使用
