@@ -40,7 +40,7 @@ PaddleFormers 支持业界常用的不同的数据集格式，通常情况下，
 ### 2.1.1. 在线数据流
 
 <details>
-  <summary><b>messages 格式（点击展开/收起）</b></summary
+  <summary><b>messages 格式（点击展开/收起）</b></summary>
 
 使用 `messages` 格式需要在 `train(/eval)_dataset_type` 处指定为 `messages`
 
@@ -58,7 +58,7 @@ messages 格式：每条数据都是一个字典，包含以下字段：
 </details>
 
 <details>
-  <summary><b>erniekit 格式（点击展开/收起）</b></summary
+  <summary><b>erniekit 格式（点击展开/收起）</b></summary>
 
 使用 `erniekit` 格式需要在 `train(/eval)_dataset_type` 处指定为 `erniekit`
 
@@ -139,7 +139,7 @@ python -u examples/tools/create_pretraining_data.py \
 ## 2.2. 指令微调（SFT）数据格式
 
 <details>
-  <summary><b>messages 格式（点击展开/收起）</b></summary
+  <summary><b>messages 格式（点击展开/收起）</b></summary>
 
 使用 `messages` 格式需要在 `train(/eval)_dataset_type` 处指定为 `messages`
 
@@ -199,7 +199,7 @@ mkdir -p data/sft && tar -zxf sft_function_call_data.tar.gz -C data/sft/
 </details>
 
 <details>
-  <summary><b>erniekit 格式（点击展开/收起）</b></summary
+  <summary><b>erniekit 格式（点击展开/收起）</b></summary>
 
 使用 `erniekit` 格式需要在 `train(/eval)_dataset_type` 处指定为 `erniekit`
 
@@ -249,7 +249,7 @@ mkdir -p data/sft && tar -xf sft_online_data_erniekit.tar.gz -C data/sft/
 ## 2.3. 直接偏好优化（DPO）数据格式
 
 <details>
-  <summary><b>messages 格式（点击展开/收起）</b></summary
+  <summary><b>messages 格式（点击展开/收起）</b></summary>
 
 使用 `messages` 格式需要在 `train(/eval)_dataset_type` 处指定为 `messages`
 
@@ -327,7 +327,7 @@ mkdir -p data/dpo && tar -xf dpo_function_call_data.tar.gz -C data/dpo/
 </details>
 
 <details>
-  <summary><b>erniekit 格式（点击展开/收起）</b></summary
+  <summary><b>erniekit 格式（点击展开/收起）</b></summary>
 
 使用 `erniekit` 格式需要在 `train(/eval)_dataset_type` 处指定为 `erniekit`
 
@@ -386,7 +386,7 @@ mkdir -p data/dpo && tar -xf dpo_online_data_erniekit.tar.gz -C data/dpo/
 ## 2.4. 多模态指令微调（SFT） 数据格式
 
 <details>
-  <summary><b>messages 格式（点击展开/收起）</b></summary
+  <summary><b>messages 格式（点击展开/收起）</b></summary>
 
 使用 `messages` 格式需要在 `train(/eval)_dataset_type` 处指定为 `messages`
 
@@ -416,7 +416,7 @@ mkdir -p data/dpo && tar -xf dpo_online_data_erniekit.tar.gz -C data/dpo/
 </details>
 
 <details>
-  <summary><b>erniekit 格式（点击展开/收起）</b></summary
+  <summary><b>erniekit 格式（点击展开/收起）</b></summary>
 
 使用 `erniekit` 格式需要在 `train(/eval)_dataset_type` 处指定为 `erniekit`
 
