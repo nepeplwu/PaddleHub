@@ -39,7 +39,8 @@ PaddleFormers 支持业界常用的不同的数据集格式，通常情况下，
 
 ### 2.1.1. 在线数据流
 
-#### messages 格式
+<details>
+  <summary><b>messages 格式（点击展开/收起）</b></summary
 
 使用 `messages` 格式需要在 `train(/eval)_dataset_type` 处指定为 `messages`
 
@@ -54,7 +55,11 @@ messages 格式：每条数据都是一个字典，包含以下字段：
 ...
 ```
 
-#### erniekit 格式
+</details>
+
+<details>
+  <summary><b>erniekit 格式（点击展开/收起）</b></summary
+
 使用 `erniekit` 格式需要在 `train(/eval)_dataset_type` 处指定为 `erniekit`
 
 erniekit 格式：每条数据都是一个字典，包含以下字段：
@@ -67,6 +72,8 @@ erniekit 格式：每条数据都是一个字典，包含以下字段：
 {"text": ["一个需要连续输入值的分类问题的示例是房屋价格预测。房屋的价格通常基于诸如平方英尺、位置、卧室和浴室数量以及像后院或车库等功能这样的因素定价。为了准确预测房屋价格，这些标准必须作为连续输入值输入到分类模型中。"]}
 ...
 ```
+
+</details>
 
 为了方便测试，我们也提供了 demo 数据集可以直接使用：
 
@@ -131,7 +138,8 @@ python -u examples/tools/create_pretraining_data.py \
 
 ## 2.2. 指令微调（SFT）数据格式
 
-#### messages 格式
+<details>
+  <summary><b>messages 格式（点击展开/收起）</b></summary
 
 使用 `messages` 格式需要在 `train(/eval)_dataset_type` 处指定为 `messages`
 
@@ -187,7 +195,11 @@ Notes:
 wget https://paddleformers.bj.bcebos.com/datasets/release/v1.0/sft_function_call_data.tar.gz
 mkdir -p data/sft && tar -zxf sft_function_call_data.tar.gz -C data/sft/
 ```
-#### erniekit 格式
+
+</details>
+
+<details>
+  <summary><b>erniekit 格式（点击展开/收起）</b></summary
 
 使用 `erniekit` 格式需要在 `train(/eval)_dataset_type` 处指定为 `erniekit`
 
@@ -221,6 +233,8 @@ Notes:
 }
 ```
 
+</details>
+
 为了方便测试，我们也提供了 [tatsu-lab/alpaca](https://huggingface.co/datasets/tatsu-lab/alpaca) demo 数据集可以直接使用：
 
 ```shell
@@ -231,9 +245,11 @@ mkdir -p data/sft && tar -xf sft_online_data_messages.tar.gz -C data/sft/
 wget https://paddleformers.bj.bcebos.com/datasets/release/v1.0/sft_online_data_erniekit.tar.gz
 mkdir -p data/sft && tar -xf sft_online_data_erniekit.tar.gz -C data/sft/
 ```
+
 ## 2.3. 直接偏好优化（DPO）数据格式
 
-#### messages 格式
+<details>
+  <summary><b>messages 格式（点击展开/收起）</b></summary
 
 使用 `messages` 格式需要在 `train(/eval)_dataset_type` 处指定为 `messages`
 
@@ -308,7 +324,10 @@ wget https://paddleformers.bj.bcebos.com/datasets/release/v1.0/dpo_function_call
 mkdir -p data/dpo && tar -xf dpo_function_call_data.tar.gz -C data/dpo/
 ```
 
-#### erniekit 格式
+</details>
+
+<details>
+  <summary><b>erniekit 格式（点击展开/收起）</b></summary
 
 使用 `erniekit` 格式需要在 `train(/eval)_dataset_type` 处指定为 `erniekit`
 
@@ -351,6 +370,8 @@ Notes:
 ...
 ```
 
+</details>
+
 为了方便测试，我们也提供了偏好数据集可以直接使用：
 
 ```shell
@@ -364,7 +385,9 @@ mkdir -p data/dpo && tar -xf dpo_online_data_erniekit.tar.gz -C data/dpo/
 
 ## 2.4. 多模态指令微调（SFT） 数据格式
 
-#### messages 格式
+<details>
+  <summary><b>messages 格式（点击展开/收起）</b></summary
+
 使用 `messages` 格式需要在 `train(/eval)_dataset_type` 处指定为 `messages`
 
 多模态 messages 格式需要在纯文本 messages 格式的基础上加上`images`、`videos`、`audios`几个 key，用于传入多模态资源的`url`或者`path`，同时在`messages`中插入`<image>`、`<video>`、`<audio>`标签来表述插入多模态数据的位置：
@@ -390,7 +413,10 @@ mkdir -p data/dpo && tar -xf dpo_online_data_erniekit.tar.gz -C data/dpo/
 {"messages": [{"role": "assistant", "content": "<image>是一个大象，<video>是一只狮子在跑步"}], "images": ["/xxx/x.jpg"], "videos": ["/xxx/x.mp4"]}
 ```
 
-#### erniekit 格式
+</details>
+
+<details>
+  <summary><b>erniekit 格式（点击展开/收起）</b></summary
 
 使用 `erniekit` 格式需要在 `train(/eval)_dataset_type` 处指定为 `erniekit`
 
@@ -461,6 +487,8 @@ SFT 数据流中，每条数据都是一个字典，包含以下字段：
     "image_info": [...]
 }
 ```
+
+</details>
 
 为了方便测试，我们也提供了用于快速训练的 demo 数据：
 
