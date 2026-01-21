@@ -39,7 +39,10 @@ PaddleFormers 通过在训练配置文件中指定字段 `model_name_or_path`来
 
 为了方便快速上手，本实验提供了一个自动化脚本，支持 **一键完成数据准备** 。该脚本会自动从 huggingface 或 modelscope 下载 COCO 数据集，并处理好 Qwen2.5-VL 模型特有的 Grounding 任务格式，生成可用于训练的`train.jsonl`和`val.jsonl`文件。
 
-```json
+<details>
+  <summary><b>转换脚本（点击展开/收起）</b></summary>
+
+```python
 import os
 import io
 import json
@@ -301,6 +304,8 @@ if __name__ == "__main__":
     main()
 ```
 
+</details>
+
 ```log
 [2025-12-30 15:05:18,936] [    INFO] - Starting processing, Output Dir: ./data/coco_grounding
 [2025-12-30 15:05:18,937] [    INFO] - Checking dataset detection-datasets/coco (HuggingFace)...
@@ -552,6 +557,10 @@ motorcycle(0,132),(379,475), person(212,106),(442,475), person(362,118),(522,475
 
 为了直观评估模型的实际表现，本实验提供了配套的可视化脚本，将该样本的预测结果和标签进行对比展示。
 
+
+<details>
+  <summary><b>评估脚本（点击展开/收起）</b></summary>
+
 ```python
 import json
 import math
@@ -754,10 +763,12 @@ if __name__ == "__main__":
 
 ```
 
+</details>
+
 <div align="center">
-  <div style="display: flex; gap: 20px; align-items: center;">
-    <img alt="grounding_demo_gt" src="https://github.com/user-attachments/assets/ad2dd8fc-e34c-4385-b85a-b004343a286e" />
-    <img alt="grounding_demo_pred" src="https://github.com/user-attachments/assets/36821793-94a7-427f-8629-5711faa83199" />
+  <div style="display: flex; gap: 15px; align-items: center; max-width: 90%;">
+    <img alt="grounding_demo_gt" src="https://github.com/user-attachments/assets/ad2dd8fc-e34c-4385-b85a-b004343a286e" style="width: 300px; height: auto;" />
+    <img alt="grounding_demo_pred" src="https://github.com/user-attachments/assets/36821793-94a7-427f-8629-5711faa83199" style="width: 300px; height: auto;" />
   </div>
 </div>
 
