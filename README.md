@@ -236,7 +236,7 @@ paddleformers-cli train ./examples/config/sft/full.yaml
 * [数据流参数说明](./docs/zh/data_processing_guide.md)
 
 ## 🚀模型训练 & 部署
-* [PaddleFormers 命令行工具](./docs/zh/cli_tools.md)
+* [PaddleFormers 命令行工具](./docs/zh/cli_usage.md)
 * [训练参数配置说明](./docs/zh/training_arguments.md)
 * [基于 PaddleFormers 进行模型预训练/后预训练](./docs/zh/pt_and_cpt_guide.md)
 * [基于 PaddleFormers 进行指令微调（SFT & LoRA）](./docs/zh/sft_and_lora_guide.md)
