@@ -1,4 +1,4 @@
-# Copyright (c) 2025 PaddlePaddle Authors. All Rights Reserved.
+# Copyright (c) 2026 PaddlePaddle Authors. All Rights Reserved.
 # Copyright (c) 2023 DeepSeek. All rights reserved.
 #
 # This code is based on EleutherAI's GPT-NeoX library and the GPT-NeoX
@@ -60,12 +60,6 @@ try:
 except:
     flash_attention = None
 
-import fp8_linear as linear_utils
-from config.configuration import DeepseekV2FastConfig
-from fp8_linear import Linear as Linear_
-from moe_gate import PretrainedMoEGate
-from moe_layer import MoELayer
-from moe_utils import get_env_device
 from paddle.distributed.fleet.meta_parallel.zero_bubble_utils import WeightGradStore
 
 from paddleformers.transformers.activations import ACT2FN
@@ -101,6 +95,13 @@ from paddleformers.utils.masking_utils import (
     _make_causal_mask,
     is_casual_mask,
 )
+
+from . import fp8_linear as linear_utils
+from .configuration import DeepseekV2FastConfig
+from .fp8_linear import Linear as Linear_
+from .moe_gate import PretrainedMoEGate
+from .moe_layer import MoELayer
+from .moe_utils import get_env_device
 
 try:
     from paddle.nn.functional import swiglu
