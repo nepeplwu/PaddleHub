@@ -7,11 +7,11 @@
 |KunlunxinP800|5.0.21.21|
 
 * **机器：** KunlunxinP800 96GB 8-card machine
-* **镜像：** registry.baidubce.com/device/paddle-xpu:ubuntu20-x86_64-gcc84-py310
+* **镜像：** ccr-2vdh3abv-pub.cnc.bj.baidubce.com/device/paddle-xpu:ubuntu20-x86_64-gcc84-py310
 * **GCC path：**  /usr/bin/gcc (8.4)
 * **python version：** 3.10
 
-要验证 Iluvatar GPU 是否正常，可以使用`xpu_smi`命令
+要验证 XPU 是否正常，可以使用`xpu_smi`命令
 
 ```shell
 xpu_smi

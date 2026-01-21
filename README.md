@@ -208,15 +208,16 @@ PaddleFormers 在 API 设计上与 Hugging Face Transformers 保持了高度一�
 
 **使用 tokenizer**
 
-```
+```python
 from paddleformers.transformers import AutoTokenizer
 
 tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-0.6B")
 tokenizer.encode("中华人民共和国")
 ```
+
 **文本生成**
 
-```
+```python
 from paddleformers.transformers import AutoTokenizer, AutoModelForCausalLM
 
 tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-0.6B")
@@ -227,11 +228,13 @@ outputs = model.generate(**input_features, max_new_tokens=128)
 
 print(tokenizer.batch_decode(outputs[0], skip_special_tokens=True))
 ```
+
 **模型训练**
 
-```
+```shell
 paddleformers-cli train ./examples/config/sft/full.yaml
 ```
+
 ## 📊数据处理
 * [数据集格式说明](./docs/zh/dataset_format.md)
 * [Chat Template 说明](./docs/zh/chat_template_guide.md)
